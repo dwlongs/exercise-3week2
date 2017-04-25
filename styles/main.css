@@ -1,6 +1,6 @@
 html, body {
     margin: 0;
-    /*height: 100%;*/
+    overflow-x: hidden;
 }
 
 .topbar {
@@ -11,6 +11,7 @@ html, body {
     width: 100%;
     background: #ffffff;
     box-shadow: 0 1px 3px #eee;
+    z-index: 1;
 }
 
 .topbar-btn {
@@ -120,7 +121,7 @@ html, body {
 }
 
 .left-dashboard {
-    flex: 1 0 300px;
+    flex: 0 0 300px;
     background-color: #81a8ca;
     display: flex;
     flex-direction: column;
@@ -209,7 +210,7 @@ html, body {
 }
 
 .middle-content {
-    flex: 1 1 auto;
+    flex: 1 1 0;
     text-align: center;
     background-color: #f2eee8;
     padding: 40px 40px 0;
@@ -223,12 +224,13 @@ html, body {
     justify-content: space-around;
     align-items: center;
     background-color: #ffffff;
-    height: 86px;
 }
 
 .count-content-list > li {
     height: inherit;
     width: 100%;
+    flex: 1 1 0;
+    box-sizing: border-box;
 }
 
 .count-content-list > li:first-child {
@@ -236,11 +238,12 @@ html, body {
 }
 
 .count-content {
-    padding: 0 20px;
+    padding: 0 5px;
     display: flex;
     height: inherit;
     flex-direction: column;
     justify-content: center;
+    height: 86px;
 }
 
 .count-content > div:first-child {
@@ -255,7 +258,7 @@ html, body {
 }
 
 .stream-items {
-    margin-top: 40px;
+    margin: 40px 0 0;
     list-style: none;
     background-color: #ffffff;
     padding: 0;
@@ -342,7 +345,7 @@ html, body {
 }
 
 .right-dashboard {
-    flex: 1 0 290px;
+    flex: 0 0 290px;
     text-align: left;
     padding: 40px 40px 0;
     box-sizing: border-box;
@@ -434,4 +437,51 @@ html, body {
     padding: 0;
     width: 22px;
     height: 22px;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    .content-container {
+        display: block;
+    }
+
+    .trend-content {
+        display: none;
+    }
+
+    .left-dashboard, .right-dashboard {
+        float: left;
+        width: 300px;
+    }
+
+    .right-dashboard {
+        float: left;
+        position: relative;
+    }
+
+    .middle-content {
+        padding-right: 0;
+        float: right;
+        width: calc(100% - 300px);
+        box-sizing: border-box;
+    }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+
+    .topbar-global-nav, .topbar-search-form {
+        display: none;
+    }
+
+    .left-dashboard, .right-dashboard {
+        display: none;
+    }
+
+    .middle-content {
+        padding: 0;
+    }
+
+    .count-content-list {
+        display: flex;
+        flex-direction: column;
+    }
 }
